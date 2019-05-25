@@ -11,6 +11,6 @@ defmodule MediumGraphqlApi.Accounts.Session do
     end
   end
 
-  defp check_password(nil, args), do: Argon2.dummy_checkpw()
-  defp check_password(user, args), do: Argon2.checkpw(args.password, user.password_hash)
+  defp check_password(nil, args), do: Argon2.no_user_verify()
+  defp check_password(user, args), do: Argon2.verify_pass(args.password, user.password_hash)
 end
