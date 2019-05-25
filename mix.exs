@@ -44,7 +44,8 @@ defmodule MediumGraphqlApi.MixProject do
       {:argon2_elixir, "~> 2.0"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
-      {:dataloader, "~> 1.0.0"}
+      {:dataloader, "~> 1.0.0"},
+      {:guardian, "~> 1.0"}
     ]
   end
 
