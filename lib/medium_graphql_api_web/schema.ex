@@ -3,7 +3,7 @@ defmodule MediumGraphqlApiWeb.Schema do
 
   alias MediumGraphqlApiWeb.Resolvers
   alias MediumGraphqlApiWeb.Schema.Middleware
-  alias MediumGraphqlApiWeb.Loaders.Content
+  alias MediumGraphqlApi.Loaders.Content
   # Import Types
   import_types(MediumGraphqlApiWeb.Schema.Types)
 
@@ -45,6 +45,8 @@ defmodule MediumGraphqlApiWeb.Schema do
     @desc "Create a post"
     field :create_post, type: :post_type do
       arg(:input, non_null(:post_input_type))
+      # Any user logged in can create a post
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.PostResolver.create_post/3)
     end
   end
